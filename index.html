@@ -1,55 +1,39 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" style="background:#050d1f;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eid Al Fitr Celebration</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --deep-navy: #050d1f;
-    --midnight: #0a1628;
-    --royal-blue: #0e2147;
-    --twilight: #1a3a6b;
-    --gold: #c8922a;
-    --gold-bright: #f0b84a;
-    --gold-light: #ffd97a;
-    --amber: #e87c1e;
-    --horizon-orange: #c4531a;
-    --horizon-peach: #e8845a;
-    --moon-glow: rgba(255, 200, 80, 0.15);
-    --star-white: rgba(255, 255, 255, 0.85);
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background-color: #050d1f !important;
+    color: #fff;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    scroll-behavior: smooth;
   }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-background: var(–deep-navy);
-color: #fff;
-font-family: ‘Cormorant Garamond’, serif;
-overflow-x: hidden;
-min-height: 100vh;
-}
 
 /* ── STARS ── */
 .stars-layer {
 position: fixed;
-inset: 0;
+top: 0; left: 0; right: 0; bottom: 0;
 pointer-events: none;
 z-index: 0;
+background: transparent;
 }
 .star {
 position: absolute;
 border-radius: 50%;
-background: white;
+background: #ffffff;
 animation: twinkle var(–dur, 3s) ease-in-out infinite var(–delay, 0s);
 }
 @keyframes twinkle {
 0%, 100% { opacity: var(–min-op, 0.2); transform: scale(1); }
-50% { opacity: var(–max-op, 0.9); transform: scale(1.3); }
+50%       { opacity: var(–max-op, 0.9); transform: scale(1.3); }
 }
 
 /* ── HERO ── */
@@ -61,362 +45,273 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 text-align: center;
-padding: 60px 24px 80px;
+padding: 80px 24px 260px;
 overflow: hidden;
 z-index: 1;
-}
-
-/* sky gradient */
-.hero::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background:
+background-color: #0a1628;
+background-image:
 radial-gradient(ellipse 70% 50% at 50% 100%, rgba(196,83,26,0.55) 0%, transparent 65%),
-radial-gradient(ellipse 40% 30% at 50% 95%, rgba(232,132,90,0.35) 0%, transparent 55%),
-radial-gradient(ellipse 100% 60% at 50% 100%, rgba(14,33,71,0.9) 40%, transparent 100%),
+radial-gradient(ellipse 40% 30% at 50% 95%,  rgba(232,132,90,0.35) 0%, transparent 55%),
 linear-gradient(180deg, #050d1f 0%, #0a1628 35%, #1a3a6b 70%, #0e2147 100%);
-z-index: -1;
 }
 
-/* moon glow */
 .moon-glow-ring {
 position: absolute;
-bottom: 18%;
-left: 50%;
+bottom: 22%; left: 50%;
 transform: translateX(-50%);
-width: 320px;
-height: 320px;
+width: 340px; height: 340px;
 border-radius: 50%;
 background: radial-gradient(circle, rgba(255,200,60,0.22) 0%, rgba(255,180,40,0.08) 40%, transparent 70%);
 animation: moonPulse 4s ease-in-out infinite;
-z-index: -1;
+z-index: 0;
+pointer-events: none;
 }
 @keyframes moonPulse {
-0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+0%, 100% { transform: translateX(-50%) scale(1);   opacity: 0.8; }
+50%       { transform: translateX(-50%) scale(1.1); opacity: 1;   }
 }
 
-/* silhouette mosque */
 .mosque-silhouette {
 position: absolute;
-bottom: 0;
-left: 50%;
+bottom: 0; left: 50%;
 transform: translateX(-50%);
-width: 100%;
-max-width: 900px;
-height: 220px;
-z-index: 0;
+width: 100%; max-width: 960px;
+height: 240px;
+z-index: 1;
+pointer-events: none;
 }
 
-/* lantern */
 .lantern-wrap {
 position: absolute;
-top: -10px;
-right: 8%;
-width: 100px;
+top: 0; right: 6%;
+width: 110px;
 animation: lanternSway 5s ease-in-out infinite;
 transform-origin: top center;
-z-index: 2;
+z-index: 3;
 filter: drop-shadow(0 0 30px rgba(255,180,60,0.7));
 }
 @keyframes lanternSway {
 0%, 100% { transform: rotate(-6deg); }
-50% { transform: rotate(6deg); }
+50%       { transform: rotate(6deg);  }
 }
 
-/* crescent moon SVG */
 .crescent-wrap {
 position: absolute;
-top: 12%;
-left: 10%;
-width: 70px;
-opacity: 0.9;
+top: 10%; left: 8%;
+width: 72px;
 animation: moonFloat 6s ease-in-out infinite;
-filter: drop-shadow(0 0 18px rgba(255,200,60,0.6));
-z-index: 2;
+filter: drop-shadow(0 0 18px rgba(255,200,60,0.7));
+z-index: 3;
 }
 @keyframes moonFloat {
-0%, 100% { transform: translateY(0); }
-50% { transform: translateY(-10px); }
+0%, 100% { transform: translateY(0);     }
+50%       { transform: translateY(-10px); }
 }
 
-/* ── CONTENT ── */
 .badge {
 display: inline-block;
-border: 1px solid rgba(200,146,42,0.4);
-background: rgba(200,146,42,0.08);
-color: var(–gold-light);
+border: 1px solid rgba(200,146,42,0.45);
+background: rgba(200,146,42,0.10);
+color: #ffd97a;
 font-family: ‘Amiri’, serif;
-font-size: 0.85rem;
-letter-spacing: 0.3em;
-padding: 6px 20px;
+font-size: 0.88rem;
+letter-spacing: 0.28em;
+padding: 7px 22px;
 border-radius: 40px;
 margin-bottom: 28px;
+position: relative; z-index: 3;
 animation: fadeDown 1s ease both;
 }
 
 .eid-title {
 font-family: ‘Cinzel Decorative’, cursive;
-font-size: clamp(3rem, 8vw, 7rem);
+font-size: clamp(3rem, 9vw, 7rem);
 font-weight: 900;
 line-height: 1;
-background: linear-gradient(135deg, var(–gold-light) 0%, var(–gold-bright) 40%, var(–amber) 70%, var(–gold) 100%);
+background: linear-gradient(135deg, #ffd97a 0%, #f0b84a 40%, #e87c1e 70%, #c8922a 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
-text-shadow: none;
 filter: drop-shadow(0 0 40px rgba(200,146,42,0.5));
 animation: fadeDown 1s 0.2s ease both;
-position: relative;
-z-index: 3;
+position: relative; z-index: 3;
 }
-
 .eid-sub {
 font-family: ‘Cinzel Decorative’, cursive;
-font-size: clamp(0.8rem, 2vw, 1.1rem);
-letter-spacing: 0.5em;
-color: rgba(255,220,130,0.7);
-margin-top: 6px;
-margin-bottom: 40px;
+font-size: clamp(0.75rem, 2vw, 1rem);
+letter-spacing: 0.55em;
+color: rgba(255,220,130,0.65);
+margin-top: 8px; margin-bottom: 36px;
+position: relative; z-index: 3;
 animation: fadeDown 1s 0.35s ease both;
 }
 
-/* ornament divider */
 .ornament {
-display: flex;
-align-items: center;
-gap: 14px;
-margin: 0 auto 48px;
+display: flex; align-items: center; gap: 14px;
+margin: 0 auto 44px;
 width: fit-content;
+position: relative; z-index: 3;
 animation: fadeDown 1s 0.5s ease both;
 }
 .ornament-line {
-width: 80px;
-height: 1px;
-background: linear-gradient(90deg, transparent, var(–gold), transparent);
+width: 80px; height: 1px;
+background: linear-gradient(90deg, transparent, #c8922a, transparent);
 }
 .ornament-diamond {
-width: 8px;
-height: 8px;
-background: var(–gold-bright);
+width: 8px; height: 8px;
+background: #f0b84a;
 transform: rotate(45deg);
-box-shadow: 0 0 10px var(–gold);
+box-shadow: 0 0 10px #c8922a;
 }
 
-/* ── QUOTE ── */
+.arabic-row {
+font-family: ‘Amiri’, serif;
+font-size: clamp(1.5rem, 4vw, 2.4rem);
+color: #f0b84a;
+letter-spacing: 0.05em;
+margin-bottom: 44px;
+filter: drop-shadow(0 0 14px rgba(200,146,42,0.45));
+position: relative; z-index: 3;
+animation: fadeUp 1.2s 0.55s ease both;
+}
+
 .quote-block {
-max-width: 680px;
-margin: 0 auto 56px;
-animation: fadeUp 1.2s 0.6s ease both;
-position: relative;
-z-index: 3;
+max-width: 660px;
+margin: 0 auto 52px;
+animation: fadeUp 1.2s 0.65s ease both;
+position: relative; z-index: 3;
 }
 .quote-mark {
 font-family: ‘Amiri’, serif;
-font-size: 5rem;
-color: var(–gold);
-opacity: 0.35;
-line-height: 0.5;
-display: block;
-margin-bottom: 12px;
+font-size: 5rem; color: #c8922a; opacity: 0.3;
+line-height: 0.5; display: block; margin-bottom: 10px;
 }
 .quote-text {
-font-family: ‘Cormorant Garamond’, serif;
+font-family: ‘Cormorant Garamond’, Georgia, serif;
 font-style: italic;
-font-size: clamp(1.25rem, 2.8vw, 1.75rem);
-font-weight: 300;
-line-height: 1.65;
-color: rgba(255, 240, 200, 0.95);
-text-shadow: 0 2px 20px rgba(0,0,0,0.4);
-letter-spacing: 0.03em;
+font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+font-weight: 300; line-height: 1.7;
+color: rgba(255,240,200,0.95);
+text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
-.quote-text em {
-color: var(–gold-light);
-font-style: normal;
-font-weight: 600;
-}
+.quote-text em { color: #ffd97a; font-style: normal; font-weight: 600; }
 .quote-attr {
-margin-top: 16px;
-font-size: 0.85rem;
-letter-spacing: 0.2em;
-color: rgba(200,146,42,0.6);
-font-style: normal;
+margin-top: 14px; font-size: 0.82rem;
+letter-spacing: 0.22em; color: rgba(200,146,42,0.55);
 font-family: ‘Amiri’, serif;
 }
 
-/* ── ARABIC CALLIGRAPHY ROW ── */
-.arabic-row {
-font-family: ‘Amiri’, serif;
-font-size: clamp(1.5rem, 4vw, 2.6rem);
-color: var(–gold-bright);
-opacity: 0.85;
-letter-spacing: 0.05em;
-margin-bottom: 48px;
-animation: fadeUp 1.2s 0.8s ease both;
-filter: drop-shadow(0 0 15px rgba(200,146,42,0.4));
-z-index: 3;
-position: relative;
-}
-
-/* ── ARABIC MESSAGE BLOCK ── */
+/* ── ARABIC MESSAGE ── */
 .arabic-message-block {
 max-width: 640px;
-margin: 0 auto 64px;
-animation: fadeUp 1.2s 0.9s ease both;
-position: relative;
-z-index: 3;
+margin: 0 auto 20px;
+position: relative; z-index: 3;
 text-align: center;
+animation: fadeUp 1.2s 0.9s ease both;
 }
 .takbeer {
 font-family: ‘Amiri’, serif;
-font-size: clamp(1.1rem, 3vw, 1.6rem);
-color: var(–gold-bright);
-line-height: 2.1;
-letter-spacing: 0.04em;
-text-shadow: 0 0 20px rgba(200,146,42,0.4);
-direction: rtl;
+font-size: clamp(1.05rem, 2.8vw, 1.55rem);
+color: #f0b84a; line-height: 2.2;
+letter-spacing: 0.03em; direction: rtl;
+text-shadow: 0 0 18px rgba(200,146,42,0.35);
 }
 .takbeer .line {
-display: block;
-opacity: 0;
+display: block; opacity: 0;
 animation: revealLine 0.8s ease forwards;
 }
 .takbeer .line:nth-child(1) { animation-delay: 1.0s; }
-.takbeer .line:nth-child(2) { animation-delay: 1.4s; }
-.takbeer .line:nth-child(3) { animation-delay: 1.8s; }
-.takbeer .line:nth-child(4) { animation-delay: 2.2s; }
+.takbeer .line:nth-child(2) { animation-delay: 1.5s; }
+.takbeer .line:nth-child(3) { animation-delay: 2.0s; }
+.takbeer .line:nth-child(4) { animation-delay: 2.5s; }
 .takbeer .line-highlight {
-color: #fff;
-font-size: 1.05em;
-font-weight: 700;
-text-shadow: 0 0 30px rgba(255,220,100,0.6);
+color: #ffffff; font-size: 1.08em; font-weight: 700;
+text-shadow: 0 0 28px rgba(255,220,100,0.55);
 }
 @keyframes revealLine {
 from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: translateY(0); }
+to   { opacity: 1; transform: translateY(0);    }
 }
 .kul-aam {
-margin-top: 28px;
-font-family: ‘Amiri’, serif;
-font-size: clamp(1.2rem, 3vw, 1.7rem);
-color: rgba(255,230,160,0.9);
-direction: rtl;
-opacity: 0;
-animation: revealLine 1s 2.6s ease forwards;
-text-shadow: 0 0 18px rgba(200,146,42,0.3);
-}
-.year-tag {
-display: inline-block;
-margin-top: 18px;
-font-family: ‘Cinzel Decorative’, cursive;
-font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-background: linear-gradient(135deg, var(–gold-light), var(–gold-bright), var(–amber));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-letter-spacing: 0.25em;
-filter: drop-shadow(0 0 16px rgba(200,146,42,0.5));
-opacity: 0;
-animation: revealLine 1s 3.0s ease forwards;
+margin-top: 24px; font-family: ‘Amiri’, serif;
+font-size: clamp(1.15rem, 2.8vw, 1.6rem);
+color: rgba(255,225,155,0.9); direction: rtl;
+opacity: 0; animation: revealLine 1s 3.0s ease forwards;
+text-shadow: 0 0 16px rgba(200,146,42,0.3);
 }
 
 /* ── WISHES ── */
 .wishes-section {
-position: relative;
-z-index: 3;
-padding: 60px 24px 80px;
-text-align: center;
-background: linear-gradient(180deg, transparent 0%, rgba(200,146,42,0.04) 50%, transparent 100%);
+position: relative; z-index: 2;
+padding: 60px 24px 80px; text-align: center;
+background-color: #050d1f;
+background-image: linear-gradient(180deg, transparent 0%, rgba(200,146,42,0.04) 50%, transparent 100%);
 }
 .wishes-label {
-font-family: ‘Amiri’, serif;
-font-size: 0.8rem;
-letter-spacing: 0.4em;
-color: rgba(200,146,42,0.5);
-text-transform: uppercase;
-margin-bottom: 16px;
+font-family: ‘Amiri’, serif; font-size: 0.78rem;
+letter-spacing: 0.42em; color: rgba(200,146,42,0.5);
+text-transform: uppercase; margin-bottom: 14px;
 }
 .wishes-name {
 font-family: ‘Cinzel Decorative’, cursive;
-font-size: clamp(2rem, 5vw, 3.5rem);
-font-weight: 700;
-background: linear-gradient(135deg, #fff 0%, var(–gold-light) 50%, var(–gold-bright) 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700;
+background: linear-gradient(135deg, #ffffff 0%, #ffd97a 50%, #f0b84a 100%);
+-webkit-background-clip: text; -webkit-text-fill-color: transparent;
 background-clip: text;
-filter: drop-shadow(0 0 20px rgba(200,146,42,0.4));
-margin-bottom: 24px;
+filter: drop-shadow(0 0 22px rgba(200,146,42,0.45));
+margin-bottom: 22px;
 animation: glowPulse 3s ease-in-out infinite;
 }
 @keyframes glowPulse {
-0%, 100% { filter: drop-shadow(0 0 20px rgba(200,146,42,0.4)); }
-50% { filter: drop-shadow(0 0 40px rgba(200,146,42,0.7)); }
+0%, 100% { filter: drop-shadow(0 0 20px rgba(200,146,42,0.4));  }
+50%       { filter: drop-shadow(0 0 42px rgba(200,146,42,0.75));}
 }
 .wishes-msg {
-font-family: ‘Cormorant Garamond’, serif;
+font-family: ‘Cormorant Garamond’, Georgia, serif;
 font-size: clamp(1rem, 2.2vw, 1.3rem);
-color: rgba(255,230,180,0.8);
-max-width: 500px;
-margin: 0 auto 40px;
-line-height: 1.7;
-font-style: italic;
+color: rgba(255,230,180,0.82); max-width: 500px;
+margin: 0 auto 38px; line-height: 1.75; font-style: italic;
 }
+.wishes-msg em { color: #ffd97a; font-style: normal; font-weight: 600; }
 .wishes-btn {
 display: inline-block;
-background: linear-gradient(135deg, var(–gold) 0%, var(–gold-bright) 50%, var(–amber) 100%);
-color: var(–deep-navy);
-font-family: ‘Cinzel Decorative’, cursive;
-font-size: 0.75rem;
-font-weight: 700;
-letter-spacing: 0.2em;
-padding: 14px 40px;
-border-radius: 40px;
-text-decoration: none;
+background: linear-gradient(135deg, #c8922a 0%, #f0b84a 50%, #e87c1e 100%);
+color: #050d1f; font-family: ‘Cinzel Decorative’, cursive;
+font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
+padding: 14px 42px; border-radius: 40px; text-decoration: none;
 transition: transform 0.3s, box-shadow 0.3s;
 box-shadow: 0 8px 30px rgba(200,146,42,0.4);
 }
-.wishes-btn:hover {
-transform: translateY(-3px);
-box-shadow: 0 14px 40px rgba(200,146,42,0.6);
-}
+.wishes-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(200,146,42,0.65); }
 
-/* ── FOOTER ── */
 footer {
-position: relative;
-z-index: 3;
-text-align: center;
-padding: 24px;
-border-top: 1px solid rgba(200,146,42,0.1);
-font-size: 0.8rem;
-color: rgba(200,146,42,0.35);
-letter-spacing: 0.2em;
-font-family: ‘Amiri’, serif;
+position: relative; z-index: 2;
+text-align: center; padding: 22px;
+border-top: 1px solid rgba(200,146,42,0.12);
+font-size: 0.78rem; color: rgba(200,146,42,0.35);
+letter-spacing: 0.22em; font-family: ‘Amiri’, serif;
+background-color: #050d1f;
 }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeDown {
 from { opacity: 0; transform: translateY(-20px); }
-to { opacity: 1; transform: translateY(0); }
+to   { opacity: 1; transform: translateY(0);     }
 }
 @keyframes fadeUp {
 from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
+to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* floating particles */
 .particle {
-position: fixed;
-pointer-events: none;
-border-radius: 50%;
-z-index: 0;
+position: fixed; pointer-events: none;
+border-radius: 50%; z-index: 0;
 animation: floatUp var(–dur, 8s) linear infinite var(–delay, 0s);
 opacity: 0;
 }
 @keyframes floatUp {
-0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-10% { opacity: var(–op, 0.5); }
-90% { opacity: var(–op, 0.5); }
+0%   { transform: translateY(100vh) rotate(0deg);   opacity: 0; }
+10%  { opacity: var(–op, 0.5); }
+90%  { opacity: var(–op, 0.5); }
 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
 </style>
@@ -424,120 +319,95 @@ opacity: 0;
 </head>
 <body>
 
-<!-- Stars -->
-
 <div class="stars-layer" id="stars"></div>
-
-<!-- Floating particles -->
-
 <div id="particles"></div>
 
-<!-- Hero -->
-
 <section class="hero">
-  <!-- Moon glow -->
   <div class="moon-glow-ring"></div>
 
-  <!-- Crescent moon SVG -->
+  <!-- Crescent -->
 
   <div class="crescent-wrap">
     <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="moonGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffd97a"/>
+          <stop offset="0%"   stop-color="#ffd97a"/>
           <stop offset="100%" stop-color="#c8922a"/>
         </radialGradient>
       </defs>
-      <path d="M55 40 A20 20 0 1 1 55 40.01 A14 14 0 1 0 55 39.99 Z" fill="url(#moonGrad)" opacity="0.95"/>
+      <path d="M55 40 A20 20 0 1 1 55 40.01 A14 14 0 1 0 55 39.99 Z" fill="url(#moonGrad)"/>
     </svg>
   </div>
 
-  <!-- Lantern SVG -->
+  <!-- Lantern -->
 
   <div class="lantern-wrap">
     <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="glow" cx="50%" cy="60%" r="50%">
-          <stop offset="0%" stop-color="#fff8c0" stop-opacity="0.9"/>
-          <stop offset="60%" stop-color="#f0b84a" stop-opacity="0.6"/>
+        <radialGradient id="lglow" cx="50%" cy="60%" r="50%">
+          <stop offset="0%"   stop-color="#fff8c0" stop-opacity="0.9"/>
+          <stop offset="60%"  stop-color="#f0b84a" stop-opacity="0.6"/>
           <stop offset="100%" stop-color="#c8922a" stop-opacity="0"/>
         </radialGradient>
-        <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#2a1800"/>
-          <stop offset="50%" stop-color="#5a3200"/>
+        <linearGradient id="lbody" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="#2a1800"/>
+          <stop offset="50%"  stop-color="#5a3200"/>
           <stop offset="100%" stop-color="#1a0f00"/>
         </linearGradient>
       </defs>
-      <!-- chain -->
       <line x1="50" y1="0" x2="50" y2="18" stroke="#c8922a" stroke-width="2.5" stroke-linecap="round"/>
-      <!-- top cap -->
       <ellipse cx="50" cy="20" rx="18" ry="6" fill="#c8922a"/>
       <rect x="32" y="20" width="36" height="8" rx="3" fill="#a07020"/>
-      <!-- body glow -->
-      <ellipse cx="50" cy="95" rx="36" ry="52" fill="url(#glow)" opacity="0.7"/>
-      <!-- body frame -->
-      <path d="M32 28 Q14 60 18 110 Q24 138 50 148 Q76 138 82 110 Q86 60 68 28 Z" fill="url(#bodyGrad)" stroke="#c8922a" stroke-width="1.5" opacity="0.95"/>
-      <!-- lattice lines vertical -->
-      <line x1="50" y1="28" x2="50" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.6"/>
-      <line x1="34" y1="30" x2="30" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.4"/>
-      <line x1="66" y1="30" x2="70" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.4"/>
-      <!-- lattice horizontal -->
-      <ellipse cx="50" cy="60" rx="30" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
-      <ellipse cx="50" cy="88" rx="33" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+      <ellipse cx="50" cy="95" rx="36" ry="52" fill="url(#lglow)" opacity="0.7"/>
+      <path d="M32 28 Q14 60 18 110 Q24 138 50 148 Q76 138 82 110 Q86 60 68 28 Z" fill="url(#lbody)" stroke="#c8922a" stroke-width="1.5" opacity="0.95"/>
+      <line x1="50" y1="28"  x2="50" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.6"/>
+      <line x1="34" y1="30"  x2="30" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.4"/>
+      <line x1="66" y1="30"  x2="70" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.4"/>
+      <ellipse cx="50" cy="60"  rx="30" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+      <ellipse cx="50" cy="88"  rx="33" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
       <ellipse cx="50" cy="116" rx="30" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
-      <!-- flame -->
       <ellipse cx="50" cy="90" rx="10" ry="14" fill="#fff8c0" opacity="0.8"/>
-      <ellipse cx="50" cy="92" rx="6" ry="9" fill="#fff" opacity="0.6"/>
-      <!-- bottom cap -->
+      <ellipse cx="50" cy="92" rx="6"  ry="9"  fill="#fff"    opacity="0.6"/>
       <ellipse cx="50" cy="148" rx="18" ry="6" fill="#c8922a"/>
       <rect x="32" y="148" width="36" height="8" rx="3" fill="#a07020"/>
-      <!-- teardrop bottom -->
       <path d="M50 156 Q44 165 50 172 Q56 165 50 156Z" fill="#c8922a"/>
     </svg>
   </div>
 
-  <!-- Mosque silhouette SVG -->
+  <!-- Mosque -->
 
   <div class="mosque-silhouette">
-    <svg viewBox="0 0 900 220" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 900 240" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="skyHorizon" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="rgba(196,83,26,0)" />
-          <stop offset="80%" stop-color="rgba(196,83,26,0.3)" />
-          <stop offset="100%" stop-color="rgba(14,33,71,0.9)" />
+        <linearGradient id="horizGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="rgba(196,83,26,0)"/>
+          <stop offset="75%"  stop-color="rgba(196,83,26,0.28)"/>
+          <stop offset="100%" stop-color="rgba(10,22,40,0.95)"/>
         </linearGradient>
       </defs>
-      <!-- far background domes -->
-      <ellipse cx="120" cy="190" rx="55" ry="40" fill="rgba(14,33,71,0.8)"/>
-      <rect x="65" y="150" width="110" height="40" fill="rgba(14,33,71,0.8)"/>
-      <line x1="120" y1="150" x2="120" y2="100" stroke="rgba(14,33,71,0.8)" stroke-width="10"/>
-      <ellipse cx="120" cy="100" rx="6" ry="6" fill="rgba(14,33,71,0.8)"/>
-      <!-- far right -->
-      <ellipse cx="780" cy="195" rx="45" ry="30" fill="rgba(14,33,71,0.7)"/>
-      <rect x="735" y="165" width="90" height="30" fill="rgba(14,33,71,0.7)"/>
-      <line x1="780" y1="165" x2="780" y2="120" stroke="rgba(14,33,71,0.7)" stroke-width="9"/>
-      <ellipse cx="780" cy="120" rx="5" ry="5" fill="rgba(14,33,71,0.7)"/>
-      <!-- center main mosque -->
-      <ellipse cx="450" cy="140" rx="90" ry="75" fill="rgba(5,13,31,0.95)"/>
-      <rect x="360" y="115" width="180" height="105" fill="rgba(5,13,31,0.95)"/>
-      <!-- center minaret -->
-      <rect x="435" y="30" width="30" height="115" fill="rgba(5,13,31,0.95)"/>
-      <polygon points="435,30 465,30 450,8" fill="rgba(5,13,31,0.95)"/>
-      <ellipse cx="450" cy="8" rx="4" ry="4" fill="rgba(200,146,42,0.7)"/>
-      <!-- left minaret -->
-      <rect x="340" y="70" width="22" height="80" fill="rgba(10,22,40,0.9)"/>
-      <polygon points="340,70 362,70 351,52" fill="rgba(10,22,40,0.9)"/>
-      <!-- right minaret -->
-      <rect x="538" y="70" width="22" height="80" fill="rgba(10,22,40,0.9)"/>
-      <polygon points="538,70 560,70 549,52" fill="rgba(10,22,40,0.9)"/>
-      <!-- ground -->
-      <rect x="0" y="200" width="900" height="20" fill="rgba(5,13,31,1)"/>
-      <!-- horizon overlay -->
-      <rect x="0" y="0" width="900" height="220" fill="url(#skyHorizon)"/>
+      <ellipse cx="130" cy="195" rx="58" ry="42" fill="#0a1628"/>
+      <rect x="72" y="155" width="116" height="45" fill="#0a1628"/>
+      <rect x="116" y="100" width="14" height="60" fill="#0a1628"/>
+      <polygon points="116,100 130,80 144,100" fill="#0a1628"/>
+      <ellipse cx="770" cy="200" rx="48" ry="34" fill="#08111f"/>
+      <rect x="722" y="168" width="96" height="36" fill="#08111f"/>
+      <rect x="762" y="118" width="12" height="55" fill="#08111f"/>
+      <polygon points="762,118 768,100 780,118" fill="#08111f"/>
+      <ellipse cx="450" cy="145" rx="96" ry="80" fill="#050d1f"/>
+      <rect x="354" y="118" width="192" height="122" fill="#050d1f"/>
+      <rect x="432" y="28"  width="36"  height="120" fill="#050d1f"/>
+      <polygon points="432,28 468,28 450,4" fill="#050d1f"/>
+      <ellipse cx="450" cy="4" rx="5" ry="5" fill="rgba(200,146,42,0.75)"/>
+      <rect x="336" y="72" width="24" height="90" fill="#08111f"/>
+      <polygon points="336,72 360,72 348,50" fill="#08111f"/>
+      <rect x="540" y="72" width="24" height="90" fill="#08111f"/>
+      <polygon points="540,72 564,72 552,50" fill="#08111f"/>
+      <rect x="0" y="210" width="900" height="30" fill="#050d1f"/>
+      <rect x="0" y="0" width="900" height="240" fill="url(#horizGrad)"/>
     </svg>
   </div>
 
-  <!-- Text content -->
+  <!-- Text -->
 
   <div class="badge">✦ Eid Mubarak ✦</div>
   <h1 class="eid-title">Eid Al Fitr</h1>
@@ -554,12 +424,10 @@ opacity: 0;
   <div class="quote-block">
     <span class="quote-mark">"</span>
     <p class="quote-text">
-      May the divine light of this blessed day
-      illuminate your heart, fill your home with
-      <em>peace and joy</em>, and bring you closer
-      to all that you hold dear.
-      This moment of <em>gratitude and renewal</em>
-      is a gift — cherish it with love.
+      May the divine light of this blessed day illuminate your heart,
+      fill your home with <em>peace and joy</em>, and bring you closer
+      to all that you hold dear — a moment of
+      <em>gratitude and renewal</em>, cherished with love.
     </p>
     <p class="quote-attr">— A Blessing for Eid —</p>
   </div>
@@ -568,18 +436,17 @@ opacity: 0;
     <div class="takbeer">
       <span class="line line-highlight">عيد مبــــــارك 🌼✨</span>
       <span class="line">تقبل الله منا ومنكم صالح الأعمال</span>
-      <span class="line line-highlight">الله أكبر الله أكبر الله أكبر</span>
+      <span class="line line-highlight">الله أكبر &nbsp; الله أكبر &nbsp; الله أكبر</span>
       <span class="line">لا إله إلا الله · الله أكبر الله أكبر · ولله الحمد 🤍</span>
     </div>
     <p class="kul-aam">كل عام وأنتم بخير 🌹</p>
-
   </div>
 </section>
 
-<!-- Wishes section -->
+<!-- Wishes -->
 
 <section class="wishes-section">
-  <div class="ornament" style="justify-content:center; margin-bottom:20px;">
+  <div class="ornament" style="justify-content:center; margin-bottom:18px;">
     <div class="ornament-line"></div>
     <div class="ornament-diamond"></div>
     <div class="ornament-line"></div>
@@ -601,40 +468,39 @@ opacity: 0;
 </footer>
 
 <script>
-  // Generate stars
-  const starsLayer = document.getElementById('stars');
-  for (let i = 0; i < 160; i++) {
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 180; i++) {
     const s = document.createElement('div');
     s.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    s.style.cssText = `
-      width:${size}px; height:${size}px;
-      top:${Math.random() * 70}%;
-      left:${Math.random() * 100}%;
-      --dur:${(Math.random() * 4 + 2).toFixed(1)}s;
-      --delay:-${(Math.random() * 5).toFixed(1)}s;
-      --min-op:${(Math.random() * 0.2).toFixed(2)};
-      --max-op:${(Math.random() * 0.5 + 0.4).toFixed(2)};
-    `;
-    starsLayer.appendChild(s);
+    const sz = (Math.random() * 2.2 + 0.4).toFixed(1);
+    s.style.cssText = [
+      'width:'+sz+'px','height:'+sz+'px',
+      'top:'+(Math.random()*72).toFixed(1)+'%',
+      'left:'+(Math.random()*100).toFixed(1)+'%',
+      '--dur:'+(Math.random()*4+2).toFixed(1)+'s',
+      '--delay:-'+(Math.random()*6).toFixed(1)+'s',
+      '--min-op:'+(Math.random()*0.15).toFixed(2),
+      '--max-op:'+(Math.random()*0.5+0.4).toFixed(2)
+    ].join(';');
+    starsEl.appendChild(s);
   }
 
-  // Generate floating gold particles
-  const particlesWrap = document.getElementById('particles');
-  for (let i = 0; i < 25; i++) {
+  const partEl = document.getElementById('particles');
+  for (let i = 0; i < 22; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 4 + 2;
-    p.style.cssText = `
-      width:${size}px; height:${size}px;
-      left:${Math.random() * 100}%;
-      background: rgba(200,146,42,${(Math.random() * 0.4 + 0.2).toFixed(2)});
-      box-shadow: 0 0 6px rgba(200,146,42,0.5);
-      --dur:${(Math.random() * 10 + 6).toFixed(1)}s;
-      --delay:-${(Math.random() * 10).toFixed(1)}s;
-      --op:${(Math.random() * 0.4 + 0.2).toFixed(2)};
-    `;
-    particlesWrap.appendChild(p);
+    const sz = (Math.random()*3+1.5).toFixed(1);
+    const op = (Math.random()*0.35+0.15).toFixed(2);
+    p.style.cssText = [
+      'width:'+sz+'px','height:'+sz+'px',
+      'left:'+(Math.random()*100).toFixed(1)+'%',
+      'background:rgba(200,146,42,'+op+')',
+      'box-shadow:0 0 5px rgba(200,146,42,0.45)',
+      '--dur:'+(Math.random()*10+6).toFixed(1)+'s',
+      '--delay:-'+(Math.random()*12).toFixed(1)+'s',
+      '--op:'+op
+    ].join(';');
+    partEl.appendChild(p);
   }
 </script>
 
