@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Al Fitr Celebration</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-navy: #050d1f;
+    --midnight: #0a1628;
+    --royal-blue: #0e2147;
+    --twilight: #1a3a6b;
+    --gold: #c8922a;
+    --gold-bright: #f0b84a;
+    --gold-light: #ffd97a;
+    --amber: #e87c1e;
+    --horizon-orange: #c4531a;
+    --horizon-peach: #e8845a;
+    --moon-glow: rgba(255, 200, 80, 0.15);
+    --star-white: rgba(255, 255, 255, 0.85);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–deep-navy);
+color: #fff;
+font-family: ‘Cormorant Garamond’, serif;
+overflow-x: hidden;
+min-height: 100vh;
+}
+
+/* ── STARS ── */
+.stars-layer {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 0;
+}
+.star {
+position: absolute;
+border-radius: 50%;
+background: white;
+animation: twinkle var(–dur, 3s) ease-in-out infinite var(–delay, 0s);
+}
+@keyframes twinkle {
+0%, 100% { opacity: var(–min-op, 0.2); transform: scale(1); }
+50% { opacity: var(–max-op, 0.9); transform: scale(1.3); }
+}
+
+/* ── HERO ── */
+.hero {
+position: relative;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 60px 24px 80px;
+overflow: hidden;
+z-index: 1;
+}
+
+/* sky gradient */
+.hero::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse 70% 50% at 50% 100%, rgba(196,83,26,0.55) 0%, transparent 65%),
+radial-gradient(ellipse 40% 30% at 50% 95%, rgba(232,132,90,0.35) 0%, transparent 55%),
+radial-gradient(ellipse 100% 60% at 50% 100%, rgba(14,33,71,0.9) 40%, transparent 100%),
+linear-gradient(180deg, #050d1f 0%, #0a1628 35%, #1a3a6b 70%, #0e2147 100%);
+z-index: -1;
+}
+
+/* moon glow */
+.moon-glow-ring {
+position: absolute;
+bottom: 18%;
+left: 50%;
+transform: translateX(-50%);
+width: 320px;
+height: 320px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(255,200,60,0.22) 0%, rgba(255,180,40,0.08) 40%, transparent 70%);
+animation: moonPulse 4s ease-in-out infinite;
+z-index: -1;
+}
+@keyframes moonPulse {
+0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+}
+
+/* silhouette mosque */
+.mosque-silhouette {
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 100%;
+max-width: 900px;
+height: 220px;
+z-index: 0;
+}
+
+/* lantern */
+.lantern-wrap {
+position: absolute;
+top: -10px;
+right: 8%;
+width: 100px;
+animation: lanternSway 5s ease-in-out infinite;
+transform-origin: top center;
+z-index: 2;
+filter: drop-shadow(0 0 30px rgba(255,180,60,0.7));
+}
+@keyframes lanternSway {
+0%, 100% { transform: rotate(-6deg); }
+50% { transform: rotate(6deg); }
+}
+
+/* crescent moon SVG */
+.crescent-wrap {
+position: absolute;
+top: 12%;
+left: 10%;
+width: 70px;
+opacity: 0.9;
+animation: moonFloat 6s ease-in-out infinite;
+filter: drop-shadow(0 0 18px rgba(255,200,60,0.6));
+z-index: 2;
+}
+@keyframes moonFloat {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+
+/* ── CONTENT ── */
+.badge {
+display: inline-block;
+border: 1px solid rgba(200,146,42,0.4);
+background: rgba(200,146,42,0.08);
+color: var(–gold-light);
+font-family: ‘Amiri’, serif;
+font-size: 0.85rem;
+letter-spacing: 0.3em;
+padding: 6px 20px;
+border-radius: 40px;
+margin-bottom: 28px;
+animation: fadeDown 1s ease both;
+}
+
+.eid-title {
+font-family: ‘Cinzel Decorative’, cursive;
+font-size: clamp(3rem, 8vw, 7rem);
+font-weight: 900;
+line-height: 1;
+background: linear-gradient(135deg, var(–gold-light) 0%, var(–gold-bright) 40%, var(–amber) 70%, var(–gold) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-shadow: none;
+filter: drop-shadow(0 0 40px rgba(200,146,42,0.5));
+animation: fadeDown 1s 0.2s ease both;
+position: relative;
+z-index: 3;
+}
+
+.eid-sub {
+font-family: ‘Cinzel Decorative’, cursive;
+font-size: clamp(0.8rem, 2vw, 1.1rem);
+letter-spacing: 0.5em;
+color: rgba(255,220,130,0.7);
+margin-top: 6px;
+margin-bottom: 40px;
+animation: fadeDown 1s 0.35s ease both;
+}
+
+/* ornament divider */
+.ornament {
+display: flex;
+align-items: center;
+gap: 14px;
+margin: 0 auto 48px;
+width: fit-content;
+animation: fadeDown 1s 0.5s ease both;
+}
+.ornament-line {
+width: 80px;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+.ornament-diamond {
+width: 8px;
+height: 8px;
+background: var(–gold-bright);
+transform: rotate(45deg);
+box-shadow: 0 0 10px var(–gold);
+}
+
+/* ── QUOTE ── */
+.quote-block {
+max-width: 680px;
+margin: 0 auto 56px;
+animation: fadeUp 1.2s 0.6s ease both;
+position: relative;
+z-index: 3;
+}
+.quote-mark {
+font-family: ‘Amiri’, serif;
+font-size: 5rem;
+color: var(–gold);
+opacity: 0.35;
+line-height: 0.5;
+display: block;
+margin-bottom: 12px;
+}
+.quote-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+font-weight: 300;
+line-height: 1.65;
+color: rgba(255, 240, 200, 0.95);
+text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+letter-spacing: 0.03em;
+}
+.quote-text em {
+color: var(–gold-light);
+font-style: normal;
+font-weight: 600;
+}
+.quote-attr {
+margin-top: 16px;
+font-size: 0.85rem;
+letter-spacing: 0.2em;
+color: rgba(200,146,42,0.6);
+font-style: normal;
+font-family: ‘Amiri’, serif;
+}
+
+/* ── ARABIC CALLIGRAPHY ROW ── */
+.arabic-row {
+font-family: ‘Amiri’, serif;
+font-size: clamp(1.5rem, 4vw, 2.6rem);
+color: var(–gold-bright);
+opacity: 0.85;
+letter-spacing: 0.05em;
+margin-bottom: 48px;
+animation: fadeUp 1.2s 0.8s ease both;
+filter: drop-shadow(0 0 15px rgba(200,146,42,0.4));
+z-index: 3;
+position: relative;
+}
+
+/* ── ARABIC MESSAGE BLOCK ── */
+.arabic-message-block {
+max-width: 640px;
+margin: 0 auto 64px;
+animation: fadeUp 1.2s 0.9s ease both;
+position: relative;
+z-index: 3;
+text-align: center;
+}
+.takbeer {
+font-family: ‘Amiri’, serif;
+font-size: clamp(1.1rem, 3vw, 1.6rem);
+color: var(–gold-bright);
+line-height: 2.1;
+letter-spacing: 0.04em;
+text-shadow: 0 0 20px rgba(200,146,42,0.4);
+direction: rtl;
+}
+.takbeer .line {
+display: block;
+opacity: 0;
+animation: revealLine 0.8s ease forwards;
+}
+.takbeer .line:nth-child(1) { animation-delay: 1.0s; }
+.takbeer .line:nth-child(2) { animation-delay: 1.4s; }
+.takbeer .line:nth-child(3) { animation-delay: 1.8s; }
+.takbeer .line:nth-child(4) { animation-delay: 2.2s; }
+.takbeer .line-highlight {
+color: #fff;
+font-size: 1.05em;
+font-weight: 700;
+text-shadow: 0 0 30px rgba(255,220,100,0.6);
+}
+@keyframes revealLine {
+from { opacity: 0; transform: translateY(12px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.kul-aam {
+margin-top: 28px;
+font-family: ‘Amiri’, serif;
+font-size: clamp(1.2rem, 3vw, 1.7rem);
+color: rgba(255,230,160,0.9);
+direction: rtl;
+opacity: 0;
+animation: revealLine 1s 2.6s ease forwards;
+text-shadow: 0 0 18px rgba(200,146,42,0.3);
+}
+.year-tag {
+display: inline-block;
+margin-top: 18px;
+font-family: ‘Cinzel Decorative’, cursive;
+font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+background: linear-gradient(135deg, var(–gold-light), var(–gold-bright), var(–amber));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: 0.25em;
+filter: drop-shadow(0 0 16px rgba(200,146,42,0.5));
+opacity: 0;
+animation: revealLine 1s 3.0s ease forwards;
+}
+
+/* ── WISHES ── */
+.wishes-section {
+position: relative;
+z-index: 3;
+padding: 60px 24px 80px;
+text-align: center;
+background: linear-gradient(180deg, transparent 0%, rgba(200,146,42,0.04) 50%, transparent 100%);
+}
+.wishes-label {
+font-family: ‘Amiri’, serif;
+font-size: 0.8rem;
+letter-spacing: 0.4em;
+color: rgba(200,146,42,0.5);
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+.wishes-name {
+font-family: ‘Cinzel Decorative’, cursive;
+font-size: clamp(2rem, 5vw, 3.5rem);
+font-weight: 700;
+background: linear-gradient(135deg, #fff 0%, var(–gold-light) 50%, var(–gold-bright) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+filter: drop-shadow(0 0 20px rgba(200,146,42,0.4));
+margin-bottom: 24px;
+animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+0%, 100% { filter: drop-shadow(0 0 20px rgba(200,146,42,0.4)); }
+50% { filter: drop-shadow(0 0 40px rgba(200,146,42,0.7)); }
+}
+.wishes-msg {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(1rem, 2.2vw, 1.3rem);
+color: rgba(255,230,180,0.8);
+max-width: 500px;
+margin: 0 auto 40px;
+line-height: 1.7;
+font-style: italic;
+}
+.wishes-btn {
+display: inline-block;
+background: linear-gradient(135deg, var(–gold) 0%, var(–gold-bright) 50%, var(–amber) 100%);
+color: var(–deep-navy);
+font-family: ‘Cinzel Decorative’, cursive;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+padding: 14px 40px;
+border-radius: 40px;
+text-decoration: none;
+transition: transform 0.3s, box-shadow 0.3s;
+box-shadow: 0 8px 30px rgba(200,146,42,0.4);
+}
+.wishes-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 14px 40px rgba(200,146,42,0.6);
+}
+
+/* ── FOOTER ── */
+footer {
+position: relative;
+z-index: 3;
+text-align: center;
+padding: 24px;
+border-top: 1px solid rgba(200,146,42,0.1);
+font-size: 0.8rem;
+color: rgba(200,146,42,0.35);
+letter-spacing: 0.2em;
+font-family: ‘Amiri’, serif;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* floating particles */
+.particle {
+position: fixed;
+pointer-events: none;
+border-radius: 50%;
+z-index: 0;
+animation: floatUp var(–dur, 8s) linear infinite var(–delay, 0s);
+opacity: 0;
+}
+@keyframes floatUp {
+0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+10% { opacity: var(–op, 0.5); }
+90% { opacity: var(–op, 0.5); }
+100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- Stars -->
+
+<div class="stars-layer" id="stars"></div>
+
+<!-- Floating particles -->
+
+<div id="particles"></div>
+
+<!-- Hero -->
+
+<section class="hero">
+  <!-- Moon glow -->
+  <div class="moon-glow-ring"></div>
+
+  <!-- Crescent moon SVG -->
+
+  <div class="crescent-wrap">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="moonGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffd97a"/>
+          <stop offset="100%" stop-color="#c8922a"/>
+        </radialGradient>
+      </defs>
+      <path d="M55 40 A20 20 0 1 1 55 40.01 A14 14 0 1 0 55 39.99 Z" fill="url(#moonGrad)" opacity="0.95"/>
+    </svg>
+  </div>
+
+  <!-- Lantern SVG -->
+
+  <div class="lantern-wrap">
+    <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="60%" r="50%">
+          <stop offset="0%" stop-color="#fff8c0" stop-opacity="0.9"/>
+          <stop offset="60%" stop-color="#f0b84a" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#c8922a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#2a1800"/>
+          <stop offset="50%" stop-color="#5a3200"/>
+          <stop offset="100%" stop-color="#1a0f00"/>
+        </linearGradient>
+      </defs>
+      <!-- chain -->
+      <line x1="50" y1="0" x2="50" y2="18" stroke="#c8922a" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- top cap -->
+      <ellipse cx="50" cy="20" rx="18" ry="6" fill="#c8922a"/>
+      <rect x="32" y="20" width="36" height="8" rx="3" fill="#a07020"/>
+      <!-- body glow -->
+      <ellipse cx="50" cy="95" rx="36" ry="52" fill="url(#glow)" opacity="0.7"/>
+      <!-- body frame -->
+      <path d="M32 28 Q14 60 18 110 Q24 138 50 148 Q76 138 82 110 Q86 60 68 28 Z" fill="url(#bodyGrad)" stroke="#c8922a" stroke-width="1.5" opacity="0.95"/>
+      <!-- lattice lines vertical -->
+      <line x1="50" y1="28" x2="50" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.6"/>
+      <line x1="34" y1="30" x2="30" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.4"/>
+      <line x1="66" y1="30" x2="70" y2="148" stroke="#c8922a" stroke-width="0.8" opacity="0.4"/>
+      <!-- lattice horizontal -->
+      <ellipse cx="50" cy="60" rx="30" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+      <ellipse cx="50" cy="88" rx="33" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+      <ellipse cx="50" cy="116" rx="30" ry="4" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+      <!-- flame -->
+      <ellipse cx="50" cy="90" rx="10" ry="14" fill="#fff8c0" opacity="0.8"/>
+      <ellipse cx="50" cy="92" rx="6" ry="9" fill="#fff" opacity="0.6"/>
+      <!-- bottom cap -->
+      <ellipse cx="50" cy="148" rx="18" ry="6" fill="#c8922a"/>
+      <rect x="32" y="148" width="36" height="8" rx="3" fill="#a07020"/>
+      <!-- teardrop bottom -->
+      <path d="M50 156 Q44 165 50 172 Q56 165 50 156Z" fill="#c8922a"/>
+    </svg>
+  </div>
+
+  <!-- Mosque silhouette SVG -->
+
+  <div class="mosque-silhouette">
+    <svg viewBox="0 0 900 220" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyHorizon" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="rgba(196,83,26,0)" />
+          <stop offset="80%" stop-color="rgba(196,83,26,0.3)" />
+          <stop offset="100%" stop-color="rgba(14,33,71,0.9)" />
+        </linearGradient>
+      </defs>
+      <!-- far background domes -->
+      <ellipse cx="120" cy="190" rx="55" ry="40" fill="rgba(14,33,71,0.8)"/>
+      <rect x="65" y="150" width="110" height="40" fill="rgba(14,33,71,0.8)"/>
+      <line x1="120" y1="150" x2="120" y2="100" stroke="rgba(14,33,71,0.8)" stroke-width="10"/>
+      <ellipse cx="120" cy="100" rx="6" ry="6" fill="rgba(14,33,71,0.8)"/>
+      <!-- far right -->
+      <ellipse cx="780" cy="195" rx="45" ry="30" fill="rgba(14,33,71,0.7)"/>
+      <rect x="735" y="165" width="90" height="30" fill="rgba(14,33,71,0.7)"/>
+      <line x1="780" y1="165" x2="780" y2="120" stroke="rgba(14,33,71,0.7)" stroke-width="9"/>
+      <ellipse cx="780" cy="120" rx="5" ry="5" fill="rgba(14,33,71,0.7)"/>
+      <!-- center main mosque -->
+      <ellipse cx="450" cy="140" rx="90" ry="75" fill="rgba(5,13,31,0.95)"/>
+      <rect x="360" y="115" width="180" height="105" fill="rgba(5,13,31,0.95)"/>
+      <!-- center minaret -->
+      <rect x="435" y="30" width="30" height="115" fill="rgba(5,13,31,0.95)"/>
+      <polygon points="435,30 465,30 450,8" fill="rgba(5,13,31,0.95)"/>
+      <ellipse cx="450" cy="8" rx="4" ry="4" fill="rgba(200,146,42,0.7)"/>
+      <!-- left minaret -->
+      <rect x="340" y="70" width="22" height="80" fill="rgba(10,22,40,0.9)"/>
+      <polygon points="340,70 362,70 351,52" fill="rgba(10,22,40,0.9)"/>
+      <!-- right minaret -->
+      <rect x="538" y="70" width="22" height="80" fill="rgba(10,22,40,0.9)"/>
+      <polygon points="538,70 560,70 549,52" fill="rgba(10,22,40,0.9)"/>
+      <!-- ground -->
+      <rect x="0" y="200" width="900" height="20" fill="rgba(5,13,31,1)"/>
+      <!-- horizon overlay -->
+      <rect x="0" y="0" width="900" height="220" fill="url(#skyHorizon)"/>
+    </svg>
+  </div>
+
+  <!-- Text content -->
+
+  <div class="badge">✦ Eid Mubarak ✦</div>
+  <h1 class="eid-title">Eid Al Fitr</h1>
+  <p class="eid-sub">C E L E B R A T I O N</p>
+
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line"></div>
+  </div>
+
+  <div class="arabic-row">عيد مبارك</div>
+
+  <div class="quote-block">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">
+      May the divine light of this blessed day
+      illuminate your heart, fill your home with
+      <em>peace and joy</em>, and bring you closer
+      to all that you hold dear.
+      This moment of <em>gratitude and renewal</em>
+      is a gift — cherish it with love.
+    </p>
+    <p class="quote-attr">— A Blessing for Eid —</p>
+  </div>
+
+  <div class="arabic-message-block">
+    <div class="takbeer">
+      <span class="line line-highlight">عيد مبــــــارك 🌼✨</span>
+      <span class="line">تقبل الله منا ومنكم صالح الأعمال</span>
+      <span class="line line-highlight">الله أكبر الله أكبر الله أكبر</span>
+      <span class="line">لا إله إلا الله · الله أكبر الله أكبر · ولله الحمد 🤍</span>
+    </div>
+    <p class="kul-aam">كل عام وأنتم بخير 🌹</p>
+
+  </div>
+</section>
+
+<!-- Wishes section -->
+
+<section class="wishes-section">
+  <div class="ornament" style="justify-content:center; margin-bottom:20px;">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line"></div>
+  </div>
+  <p class="wishes-label">Warm Wishes From</p>
+  <h2 class="wishes-name">Azgar</h2>
+  <p class="wishes-msg">
+    May Allah accept our good deeds and yours,
+    and may this blessed Eid bring your heart
+    <em>joy, peace, and renewed hope</em> for every day ahead.
+    <br><br>
+    Warmest wishes to you and your loved ones.
+  </p>
+  <a href="#" class="wishes-btn">Spread the Joy ✦</a>
+</section>
+
+<footer>
+  © 2026 · Eid Al Fitr Celebration · Made with ♥ by Azgar
+</footer>
+
+<script>
+  // Generate stars
+  const starsLayer = document.getElementById('stars');
+  for (let i = 0; i < 160; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random() * 70}%;
+      left:${Math.random() * 100}%;
+      --dur:${(Math.random() * 4 + 2).toFixed(1)}s;
+      --delay:-${(Math.random() * 5).toFixed(1)}s;
+      --min-op:${(Math.random() * 0.2).toFixed(2)};
+      --max-op:${(Math.random() * 0.5 + 0.4).toFixed(2)};
+    `;
+    starsLayer.appendChild(s);
+  }
+
+  // Generate floating gold particles
+  const particlesWrap = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 4 + 2;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random() * 100}%;
+      background: rgba(200,146,42,${(Math.random() * 0.4 + 0.2).toFixed(2)});
+      box-shadow: 0 0 6px rgba(200,146,42,0.5);
+      --dur:${(Math.random() * 10 + 6).toFixed(1)}s;
+      --delay:-${(Math.random() * 10).toFixed(1)}s;
+      --op:${(Math.random() * 0.4 + 0.2).toFixed(2)};
+    `;
+    particlesWrap.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
